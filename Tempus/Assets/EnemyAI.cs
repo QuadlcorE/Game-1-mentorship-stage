@@ -2,9 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using UnityEditor;
 
 public class EnemyAI : MonoBehaviour
 {
+    // Field of view variables 
+    public float viewRadius;
+    public float viewAngle;
+
+    public LayerMask targetMask;
+    public LayerMask obstacleMask;
+
+    [HideInInspector]
+    public List<Transform> visibleTargets = new List<Transform>();
+
+
+    // Pathfinding Variables
     public Transform target;
 
     public float speed = 200f;
@@ -26,6 +39,37 @@ public class EnemyAI : MonoBehaviour
         InvokeRepeating("UpdatePath", 0f, .5f);
     }
 
+    // ============== Field of view ==================
+    void checkForPlayerVisibility()
+    {
+        foreach (Transform targeted in visibleTargets)
+        {
+            Vector2 toTarget = (targeted.position - gameObject.transform.position).normalized;
+            float angle = Vector2.Angle(gameObject.transform.up, toTarget);
+
+            if ((Vector2.Distance(transform.position, target.position) < viewRadius) && (angle < viewAngle / 2))
+            {
+                Debug.Log(target.gameObject.name + " is within the radius");
+                Debug.Log(target.gameObject.name + "is within the viewing angle");
+            }
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        // Draw the view radius
+        Handles.color = Color.white;
+        Handles.DrawWireArc(gameObject.transform.position, Vector3.forward, Vector3.right, 360, viewRadius);
+
+        Vector3 viewAngleA = new Vector3(Mathf.Sin(-viewAngle / 2 * Mathf.Deg2Rad), Mathf.Cos(-viewAngle / 2 * Mathf.Deg2Rad), 0);
+        Vector3 viewAngleB = new Vector3(Mathf.Sin(viewAngle / 2 * Mathf.Deg2Rad), Mathf.Cos(viewAngle / 2 * Mathf.Deg2Rad), 0);
+
+        Handles.DrawLine(gameObject.transform.position, gameObject.transform.position + viewAngleA * viewRadius);
+        Handles.DrawLine(gameObject.transform.position, gameObject.transform.position + viewAngleB * viewRadius); 
+    }
+
+
+    // ============== Pathfinding ====================
     void UpdatePath()
     {
         if (seeker.IsDone())
@@ -43,8 +87,7 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    void TrackPath()
     {
         if (path == null) return;
 
@@ -52,7 +95,8 @@ public class EnemyAI : MonoBehaviour
         {
             reachedEndOfPath = true;
             return;
-        } else
+        }
+        else
         {
             reachedEndOfPath = false;
         }
@@ -61,6 +105,7 @@ public class EnemyAI : MonoBehaviour
         Vector2 force = direction * speed * Time.deltaTime;
 
         rb.AddForce(force);
+        //rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
 
@@ -68,5 +113,11 @@ public class EnemyAI : MonoBehaviour
         {
             currentWaypoint++;
         }
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        // TrackPath();
     }
 }
