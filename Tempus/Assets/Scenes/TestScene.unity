@@ -351,6 +351,7 @@ GameObject:
   - component: {fileID: 464872249}
   - component: {fileID: 464872251}
   - component: {fileID: 464872250}
+  - component: {fileID: 464872252}
   m_Layer: 0
   m_Name: Enemy Type1
   m_TagString: Untagged
@@ -480,23 +481,32 @@ MonoBehaviour:
     m_Bits: 64
   targetPlayer: {fileID: 1242908589}
   target: {fileID: 1242908591}
-  awarenessSpeed: 5
-  awarenessSlowDown: 3
+  awarenessSpeed: 23
+  awarenessSlowDown: 13
   selfAwarenessLevelDiscovery: 30
   selfAwarenessLevelMax: 100
+  currentAwarenessLevel: 0
   visibleTargets: []
   pathingAIScript: {fileID: 464872247}
+  destinationSetterScript: {fileID: 464872246}
   nextPatrolPoint: {fileID: 0}
   previousPatrolPoint: {fileID: 0}
+  minStandingDistance: 0.3
   idleTimeMax: 3
   idleRotationAngle: 90
   idleRotationSpeed: 20
+  initialRotation: {x: 0, y: 0, z: 0, w: 0}
+  targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  setRotation: 0
+  idleTimerMax: 0
   idleTimer: 0
   panningDirection: 1
   searchRadius: 50
+  allWayPointObjects: []
   discoveredEvent:
     m_PersistentCalls:
       m_Calls: []
+  currentState: 0
   idleReturnTimeCounter: 0
 --- !u!66 &464872250
 CompositeCollider2D:
@@ -541,6 +551,28 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &464872252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 464872244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb6a34d769a1e4ac7b0b30e433aa443c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  smoothType: 3
+  subdivisions: 2
+  iterations: 2
+  strength: 0.5
+  uniformLength: 1
+  maxSegmentLength: 2
+  bezierTangentLength: 0.4
+  offset: 0.2
+  factor: 0.1
 --- !u!1 &476312847
 GameObject:
   m_ObjectHideFlags: 0
@@ -2379,7 +2411,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1242908589}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -6.58, y: 2.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
