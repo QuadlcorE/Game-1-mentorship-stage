@@ -19,8 +19,8 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    private void OnMove(InputValue value)
+    public void OnMove(InputAction.CallbackContext ctx)
     {
-        _playerRigidbody.velocity = value.Get<Vector2>() * moveSpeed;
+        _playerRigidbody.velocity = ctx.ReadValue<Vector2>() * moveSpeed;
     }
 }
