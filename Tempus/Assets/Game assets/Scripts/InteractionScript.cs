@@ -10,7 +10,7 @@ interface IInteractable
 
 public class InteractionScript : MonoBehaviour
 {
-    public Transform InteractorSource;
+    //public Transform InteractorSource;
     private bool interact = false;
     [SerializeField]
     private GameObject currentInteractible;
@@ -29,20 +29,26 @@ public class InteractionScript : MonoBehaviour
 
     public void OnFire(InputAction.CallbackContext ctx)
     {
-        Debug.Log(ctx.ReadValue<bool>());
+        if( ctx.started && currentInteractible != null)
+        {
+            if (currentInteractible.TryGetComponent(out IInteractable interactObj))
+            {
+                interactObj.Interact();
+            }
+        }
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if ( collision.gameObject.TryGetComponent(out IInteractable interactObj))
         {
             currentInteractible = collision.gameObject;
-            interactObj.Interact();
         }
-        else
-        {
-            currentInteractible = null;
-        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        currentInteractible = null;
     }
 
 }
