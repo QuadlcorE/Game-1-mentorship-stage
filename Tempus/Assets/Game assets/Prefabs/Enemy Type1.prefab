@@ -145,7 +145,7 @@ MonoBehaviour:
     m_Bits: 64
   targetPlayer: {fileID: 0}
   target: {fileID: 0}
-  awarenessSpeed: 23
+  awarenessSpeed: 33
   awarenessSlowDown: 13
   selfAwarenessLevelDiscovery: 30
   selfAwarenessLevelMax: 100
@@ -167,6 +167,7 @@ MonoBehaviour:
   panningDirection: 1
   searchRadius: 50
   allWayPointObjects: []
+  spriteRenderer: {fileID: 2266092757198309792}
   discoveredEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -310,8 +311,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 1, g: 0.6073392, b: 0.12549019, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 9f763fcec2cd3534bb67426e81a1ee8d, type: 3}
+  m_Color: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

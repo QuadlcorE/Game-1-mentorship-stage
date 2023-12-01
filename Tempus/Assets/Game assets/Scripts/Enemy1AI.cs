@@ -25,6 +25,8 @@ namespace Pathfinding {
         public float selfAwarenessLevelMax = 100;
         [SerializeField]
         private float currentAwarenessLevel;
+        [SerializeField]
+        private float currentAwarenessPercentage;
 
         [HideInInspector]
         public List<Transform> visibleTargets = new List<Transform>();
@@ -63,6 +65,10 @@ namespace Pathfinding {
         bool patrolPointReached = false;
         float nearestWayPointDistance = Mathf.Infinity;
 
+        // Sprite Renderer
+        public SpriteRenderer spriteRenderer;
+        public float colorChangeSpeed;
+        public Color tintedColor;
 
         // Global events 
         public UnityEvent discoveredEvent;
@@ -213,7 +219,7 @@ namespace Pathfinding {
             if ((Vector2.Distance(transform.position, targetPosition) < viewRadius) && (angle < viewAngle / 2))
             {
                 // Debug.Log(target.gameObject + "is within the radius");
-                currentAwarenessLevel += awarenessSpeed * Time.deltaTime;
+                if (currentAwarenessLevel <= 100)currentAwarenessLevel += awarenessSpeed * Time.deltaTime;
             }
         }
 
@@ -246,7 +252,12 @@ namespace Pathfinding {
         void Update()
         {
             StateHandler();
-            if (currentAwarenessLevel > 0) currentAwarenessLevel -= awarenessSlowDown * Time.deltaTime;
+            if (currentAwarenessLevel > 0 && currentAwarenessLevel < 100) currentAwarenessLevel -= awarenessSlowDown * Time.deltaTime;
+
+            // Calculate the tint color based on the awareness level
+            
+            // TODO Tint the enemy Character red based on the enemy awarenessLevel
+
             checkForPlayerVisibility();
         }
     }
