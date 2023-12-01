@@ -4682,10 +4682,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -4710,7 +4710,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -14145,6 +14145,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogueBox
       objectReference: {fileID: 0}
+    - target: {fileID: 2410189376672404313, guid: f6478879b29b1a942afab2826f4a0bbe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2410189376672404314, guid: f6478879b29b1a942afab2826f4a0bbe, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -14211,11 +14215,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2410189376672404314, guid: f6478879b29b1a942afab2826f4a0bbe, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -960
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2410189376672404314, guid: f6478879b29b1a942afab2826f4a0bbe, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -564.926
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2410189376672404314, guid: f6478879b29b1a942afab2826f4a0bbe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -19960,6 +19964,14 @@ PrefabInstance:
       propertyPath: dialogueText
       value: 
       objectReference: {fileID: 1485086862}
+    - target: {fileID: 2490557470603037912, guid: 6fe7daa3ea6e6234a8fc1dc87ad60a42, type: 3}
+      propertyPath: introDialogue.sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2490557470603037912, guid: 6fe7daa3ea6e6234a8fc1dc87ad60a42, type: 3}
+      propertyPath: introDialogue.sentences.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2490557470603037913, guid: 6fe7daa3ea6e6234a8fc1dc87ad60a42, type: 3}
       propertyPath: m_Name
       value: 'Dialogue Manager '

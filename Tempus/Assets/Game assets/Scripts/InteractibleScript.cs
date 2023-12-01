@@ -23,6 +23,6 @@ public class InteractibleScript : MonoBehaviour, IInteractable
     public void Interact()
     {
         dialogueManagerScript.StartDialogue(dialogueManagerScript.introDialogue);
-        Debug.Log("Interacted with blue box");
+        gameObject.SetActive(false);
     }
 }

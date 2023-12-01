@@ -59,6 +59,7 @@ public class DialogueManager : MonoBehaviour
     }
     public void EndDialogue() 
     {
+        DialogueBox.SetActive(false);
         // DialogueBoxAnim.SetBool("IsOpen", false);
     }
 }
