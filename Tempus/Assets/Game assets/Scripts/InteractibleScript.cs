@@ -5,8 +5,15 @@ using UnityEngine;
 public class InteractibleScript : MonoBehaviour, IInteractable
 {
     public SpriteRenderer spriteRenderer;
+    public GameObject dialogueManager;
     public Color tint; // The tint color
     public float speed = 1f; // The speed of the oscillation
+    public DialogueManager dialogueManagerScript;
+
+    void Start()
+    {
+        // dialogueManagerScript = dialogueManager.GetComponent<DialogueManager>();
+    }
 
     void Update()
     {
@@ -15,6 +22,7 @@ public class InteractibleScript : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        dialogueManagerScript.StartDialogue(dialogueManagerScript.introDialogue);
         Debug.Log("Interacted with blue box");
     }
 }

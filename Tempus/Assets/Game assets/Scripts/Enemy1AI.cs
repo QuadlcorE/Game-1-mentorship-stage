@@ -216,10 +216,12 @@ namespace Pathfinding {
             Vector2 toTarget = (target.position - gameObject.transform.position).normalized;
             float angle = Vector2.Angle(gameObject.transform.up, toTarget);
 
-            if ((Vector2.Distance(transform.position, targetPosition) < viewRadius) && (angle < viewAngle / 2))
+            if ((Vector2.Distance(transform.position, targetPosition) < viewRadius) && (angle < viewAngle / 2) )
             {
+                // Cast a line from object1 to object2
+                RaycastHit2D hit = Physics2D.Linecast(gameObject.transform.position, target.position);
                 // Debug.Log(target.gameObject + "is within the radius");
-                if (currentAwarenessLevel <= 100)currentAwarenessLevel += awarenessSpeed * Time.deltaTime;
+                if (currentAwarenessLevel <= 100 && hit.collider.name == target.name)currentAwarenessLevel += awarenessSpeed * Time.deltaTime;
             }
         }
 
@@ -254,11 +256,18 @@ namespace Pathfinding {
             StateHandler();
             if (currentAwarenessLevel > 0 && currentAwarenessLevel < 100) currentAwarenessLevel -= awarenessSlowDown * Time.deltaTime;
 
-            // Calculate the tint color based on the awareness level
-            
-            // TODO Tint the enemy Character red based on the enemy awarenessLevel
+            // Get the current color of the SpriteRenderer
+            Color color = spriteRenderer.color;
 
-            checkForPlayerVisibility();
+            // Set the alpha value of the color
+            color.a = currentAwarenessLevel/selfAwarenessLevelMax;
+
+            // Set the color of the SpriteRenderer
+            spriteRenderer.color = color;
+
+        // TODO Tint the enemy Character red based on the enemy awarenessLevel
+
+        checkForPlayerVisibility();
         }
     }
 }

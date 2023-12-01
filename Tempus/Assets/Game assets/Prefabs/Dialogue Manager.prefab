@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2490557470603037913
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2490557470603037919}
+  - component: {fileID: 2490557470603037912}
+  m_Layer: 0
+  m_Name: Dialogue Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2490557470603037919
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2490557470603037913}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.2645855, y: 5.1260176, z: -2.345299}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2490557470603037912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2490557470603037913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad0303e19553eb34788e1e4c1caf3bb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameText: {fileID: 0}
+  dialogueText: {fileID: 0}
+  DialogueBoxAnim: {fileID: 0}
+  DialogueBox: {fileID: 0}
+  introDialogue:
+    name: Toph
+    sentences:
+    - Hey There, my name is Aaron, I am an artist and a good prgrammer like egbon
+      eddie. Thank you.
+    - Hello beautiful people, I am Eddie, a very good programmer (I am someone who
+      can hanle AI and Game Networking under 1 hour). Thank you.
+    - Hi, I am Iykemark, I am a game developer and i have solid experience on different
+      game engines and platforms. Thank you.
+    - Hello, I am Jennie, I am a writer and writing on this game story.
+    - Hi, my name is Queen, I mostly work on 3d games and also specialize in VR and
+      XR games. Thank you.
